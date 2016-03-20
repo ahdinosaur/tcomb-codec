@@ -1,0 +1,19 @@
+{
+  "name": "tcomb-codec",
+  "version": "1.0.0",
+  "description": "encode and decode tcomb types",
+  "main": "index.js",
+  "dependencies": {
+    "lodash": "^4.6.1",
+    "traverse": "^0.6.6"
+  },
+  "devDependencies": {
+    "json-stable-stringify": "^1.0.1"
+  },
+  "scripts": {
+    "test": "tape test.js"
+  },
+  "keywords": [],
+  "author": "Mikey <michael.williams@enspiral.com> (http://dinosaur.is)",
+  "license": "ISC"
+}
