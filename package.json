@@ -1,6 +1,6 @@
 {
   "name": "tcomb-codec",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "encode and decode tcomb types",
   "main": "index.js",
   "dependencies": {
