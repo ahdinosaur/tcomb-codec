@@ -1,4 +1,3 @@
-var traverse = require('traverse')
 var t = require('tcomb')
 var mapValues = require('lodash/mapValues')
 var map = require('lodash/map')
@@ -88,39 +87,14 @@ module.exports = {
     if (meta == null) { return null }
     switch (meta.kind) {
       case 'irreducible':
-        switch (meta.kind.name) {
-          case 'String':
-            return t.String
-          case 'Number':
-            return t.Number
-          case 'Boolean':
-            return t.Boolean
-          case 'Array':
-            return t.Array
-          case 'Object':
-            return t.Object
-          case 'Function':
-            return t.Function
-          case 'Error':
-            return t.Error
-          case 'RegExp':
-            return t.RegExp
-          case 'Date':
-            return t.Date
-          case 'Nil':
-            return null
-          case 'Any':
-            return t.Any
-          default:
-            return t.irreducible(
-              meta.name,
-              new Function(meta.predicate)
-            )
-        }
+        return t.irreducible(
+          meta.name,
+          toFunction(meta.predicate)
+        )
       case 'refinement':
         return t.refinement(
           decode(meta.type),
-          new Function(meta.predicate),
+          toFunction(meta.predicate),
           meta.name
         )
       case 'enums':
@@ -165,4 +139,10 @@ module.exports = {
         throw new Error('tcomb-codec: unknown meta.kind `'+meta.kind+'`')
     }
   }
+}
+
+var genfun = require('generate-function')
+
+function toFunction (string) {
+  return genfun(string).toFunction()
 }

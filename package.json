@@ -4,11 +4,12 @@
   "description": "encode and decode tcomb types",
   "main": "index.js",
   "dependencies": {
+    "generate-function": "^2.0.0",
     "lodash": "^4.6.1",
-    "traverse": "^0.6.6"
+    "tcomb": "^3.0.0"
   },
   "devDependencies": {
-    "json-stable-stringify": "^1.0.1"
+    "tape": "^4.5.1"
   },
   "scripts": {
     "test": "tape test.js"
